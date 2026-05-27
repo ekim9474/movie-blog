@@ -1,0 +1,41 @@
+---
+import RatingBox from "../components/RatingBox.astro";
+import Header from "../components/Header.astro";
+import { Font } from "astro:assets";
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <Font cssVariable="--font-lato" />
+  </head>
+  <body>
+    <Header />
+    <div class="blog">
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.author}</p>
+      <p>Watched date: {frontmatter.watchDate}</p>
+      <RatingBox rating={frontmatter.rating} />
+
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  .blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: yellow;
+  }
+</style>
