@@ -1,0 +1,77 @@
+---
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout>
+  <div class="aboutContainer">
+    <div class="section">
+      <h3>About Me</h3>
+      <p>
+        Hello! I'm Elliot Kim, and I'm creating a blog to document my
+        movie-watching process. I really became a hard-core film fanatic in
+        Summer 2025, and I have been diving into movies ever since. I guess you
+        could say I recently got my "film buff" card.
+      </p>
+    </div>
+
+    <div class="Section">
+      <h3>Movie Watching Philosophy</h3>
+      <p>
+        I watch a ton of movies because the filmmaking process and directorial
+        intent genuinely interest me. I love diving into the visual and auditory
+        elements of a movie: the framing of a shot, the blocking of actors, the
+        dynamism of complex set pieces, the development of characters, the flow
+        of riveting dialogue. I consider the cinematic arts to be a holistic
+        embodiment of human creativity, as it is a culmination of so many other
+        art forms. It is also my gateway into general art appreciation and
+        analysis.
+      </p>
+      <p>
+        Watching movies has turned into a sort of mental exercise, one in which
+        I get to explore the conveyance of an artistic or philosophical crux.
+        It's also a way for me to understand the world just a little bit better.
+        International cinema gives me the opportunity to improve my worldliness,
+        to provide new perspectives which I can then apply in other situations.
+      </p>
+      <p>
+        I try to give most movies a fair chance. I prefer giving generous
+        scores, rather than vicariously critiquing flaws and issuing nitpicky
+        post-watch eviscerations. I can also distinguish between challenging
+        watches and entertaining popcorn flicks. A loud minority of film buffs
+        will jabber on and on about how they do not "watch movies for
+        entertainment", but that sort of mindset would sap the joy right out of
+        this hobby. I don't do it for a career, so I would prefer to enjoy it.
+      </p>
+    </div>
+  </div>
+  <div class="footer">
+    <p>(c) Elliot Kim 2026. All rights reserved.</p>
+  </div>
+</GenLayout>
+
+<style>
+  .aboutContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section {
+    width: 100%;
+  }
+
+  .footer {
+    color: wheat;
+    margin-top: 10vh;
+    padding-top: 1vh;
+    font-size: 0.5rem;
+    border-top: 0.25px solid white;
+  }
+
+  @media screen and (min-width: 1020px) {
+    .aboutContainer {
+      width: 50%;
+    }
+  }
+</style>

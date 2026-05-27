@@ -1,0 +1,45 @@
+---
+import Header from "../components/Header.astro";
+import { Font, Image } from "astro:assets";
+import bannerImg from "../assets/landing/2.jpg";
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Font cssVariable="--font-lato" />
+  </head>
+  <body>
+    <div class="genContainer">
+      <Header />
+      <!-- <Image src={bannerImg} alt="Shot from Yi Yi of N.J. on dock" /> -->
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-lato);
+    background-color: #2d2d30;
+    color: #f0f4f6;
+  }
+
+  Image {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .genContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
