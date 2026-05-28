@@ -1,0 +1,59 @@
+---
+const { rating } = Astro.props;
+
+const badVal = rating < 40;
+const okVal = rating >= 40 && rating < 70;
+const goodVal = rating >= 70 && rating < 90;
+const excelVal = rating >= 90;
+
+// console.log(typeof rating);
+---
+
+<div
+  class:list={[
+    "biggerRatingBox",
+    { badStyle: badVal },
+    { okStyle: okVal },
+    { goodStyle: goodVal },
+    { excelStyle: excelVal },
+  ]}
+>
+  <h3>{rating}</h3>
+</div>
+
+<style>
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  .biggerRatingBox {
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.5em;
+  }
+
+  .badStyle {
+    background-color: red;
+  }
+
+  .okStyle {
+    background-color: #ffde21;
+  }
+
+  .goodStyle {
+    background-color: green;
+  }
+
+  .excelStyle {
+    background-color: blue;
+  }
+
+  #captionText {
+    font-size: 0.35rem;
+  }
+</style>
