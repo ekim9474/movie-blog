@@ -1,0 +1,61 @@
+---
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout>
+  <div class="listContainer">
+    <h1>Lists</h1>
+    <div class="listDivider">
+      <h3>By Movement</h3>
+      <ul>
+        <li>Silent Era</li>
+        <li>Golden Age of Hollywood</li>
+      </ul>
+    </div>
+    <div class="listDivider">
+      <h3>By Director</h3>
+    </div>
+    <div class="listDivider">
+      <h3>By Era</h3>
+    </div>
+    <div class="listDivider">
+      <h3>By Difficulty</h3>
+    </div>
+    <div class="listDivider">
+      <h3>Miscellaneous</h3>
+      <ul>
+        <li>
+          <a href="/movie-blog/lists/misc/movies-i-need-to-revisit"
+            >Movies I Need to Revisit</a
+          >
+          <span class="newText">New</span>
+        </li>
+        <li>
+          The Crazy World of the Avant-Garde <span class="newText">New</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</GenLayout>
+
+<style>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .listContainer {
+    width: 60%;
+    height: 100%;
+    font-size: 1.15rem;
+  }
+
+  .listDivider {
+    width: 100%;
+  }
+
+  .newText {
+    font-size: 0.65rem;
+    color: red;
+  }
+</style>

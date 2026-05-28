@@ -1,11 +1,19 @@
 ---
+import { Image } from "astro:assets";
+
 import GenLayout from "../../layouts/GenLayout.astro";
+import BaseImage from "../../assets/shots/hana-bi1.jpg";
 ---
 
 <GenLayout>
   <div class="aboutContainer">
+    <Image
+      src={BaseImage}
+      alt="Shot of a dying wife, Hana-bi (1997)"
+      class="baseImage"
+    />
     <div class="section">
-      <h3>About Me</h3>
+      <h1>About Me</h1>
       <p>
         Hello! I'm Elliot Kim, and I'm creating a blog to document my
         movie-watching process. I really became a hard-core film fanatic in
@@ -35,21 +43,24 @@ import GenLayout from "../../layouts/GenLayout.astro";
       </p>
       <p>
         I try to give most movies a fair chance. I prefer giving generous
-        scores, rather than vicariously critiquing flaws and issuing nitpicky
-        post-watch eviscerations. I can also distinguish between challenging
-        watches and entertaining popcorn flicks. A loud minority of film buffs
+        scores, rather than viciously critiquing flaws and issuing nitpicky
+        post-watch eviscerations. I also can appreciate the fun popcorn flick as
+        much as the challenging arthouse movie. A loud minority of film buffs
         will jabber on and on about how they do not "watch movies for
         entertainment", but that sort of mindset would sap the joy right out of
         this hobby. I don't do it for a career, so I would prefer to enjoy it.
       </p>
     </div>
   </div>
-  <div class="footer">
-    <p>(c) Elliot Kim 2026. All rights reserved.</p>
-  </div>
 </GenLayout>
 
 <style>
+  .baseImage {
+    max-width: 90svw;
+    height: auto;
+    align-self: center;
+  }
+
   .aboutContainer {
     width: 60%;
     height: 100%;
@@ -59,14 +70,6 @@ import GenLayout from "../../layouts/GenLayout.astro";
 
   .section {
     width: 100%;
-  }
-
-  .footer {
-    color: wheat;
-    margin-top: 10vh;
-    padding-top: 1vh;
-    font-size: 0.5rem;
-    border-top: 0.25px solid white;
   }
 
   @media screen and (min-width: 1020px) {

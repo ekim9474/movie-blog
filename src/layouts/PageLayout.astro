@@ -1,0 +1,17 @@
+---
+import GenLayout from "./GenLayout.astro";
+---
+
+<!-- realized that this most pages will follow this format, so this will avoid breaking things already using GenLayout -->
+<GenLayout>
+  <div class="genericContainer">
+    <slot />
+  </div>
+</GenLayout>
+
+<style>
+  .genericContainer {
+    width: 60%;
+    height: 100%;
+  }
+</style>

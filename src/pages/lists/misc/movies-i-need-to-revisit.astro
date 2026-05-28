@@ -1,0 +1,50 @@
+---
+import PageLayout from "../../../layouts/PageLayout.astro";
+import RatingBox from "../../../components/RatingBox.astro";
+---
+
+<PageLayout>
+  <h1>Movies I Need to Revisit</h1>
+  <ul>
+    <li>
+      Limite <span><p class="inlineInfo">(Mario Peixoto, 1931, 114m)</p></span>
+      <span><RatingBox rating={60} /></span>
+    </li>
+    <li>
+      A Brighter Summer Day <span
+        ><p class="inlineInfo">(Edward Yang, 1991, 237m)</p></span
+      >
+      <span><RatingBox rating={100} /></span>
+    </li>
+    <li>
+      No Country for Old Men <span
+        ><p class="inlineInfo">(Ethan Coen, Joel Coen, 2007, 122m)</p></span
+      >
+      <span><RatingBox rating={70} /></span>
+    </li>
+  </ul>
+</PageLayout>
+
+<style>
+  li span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents the component inside the span from breaking into a new line */
+  }
+
+  li {
+    font-size: 1.1rem;
+    line-height: 0.25rem;
+  }
+
+  .inlineInfo {
+    color: #faf6cf;
+    font-size: 0.9rem;
+  }
+
+  @media screen and (max-width: 770px) {
+    li {
+      line-height: normal;
+    }
+  }
+</style>
