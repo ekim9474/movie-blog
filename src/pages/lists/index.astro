@@ -5,6 +5,11 @@ import GenLayout from "../../layouts/GenLayout.astro";
 <GenLayout>
   <div class="listContainer">
     <h1>Lists</h1>
+    <p>
+      Come check out my <a href="movie-blog/watchlist" id="watchlist"
+        >watchlist</a
+      >!
+    </p>
     <div class="listDivider">
       <h3>By Movement</h3>
       <ul>
@@ -57,5 +62,14 @@ import GenLayout from "../../layouts/GenLayout.astro";
   .newText {
     font-size: 0.65rem;
     color: red;
+  }
+
+  #watchlist {
+    color: #ff9b51;
+    transition: color 0.25s ease-in;
+  }
+
+  #watchlist:hover {
+    color: #f7b980;
   }
 </style>

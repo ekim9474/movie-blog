@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from "astro:content";
+const ratings = await getCollection("ratingsCollection");
+ratings.sort(
+  (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+);
+
+import PageLayout from "../../layouts/PageLayout.astro";
+import RatingBox from "../../components/RatingBox.astro";
+---
+
+<PageLayout>
+  <h1>Ratings List</h1>
+  <p>
+    This place will contain all of the ratings that I already have completed.
+  </p>
+  <ul>
+    {
+      ratings.map((rating) => (
+        <a href={rating.id}>
+          <li>
+            {rating.data.title}
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        </a>
+      ))
+    }
+  </ul>
+</PageLayout>
+
+<style>
+  li span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents the component inside the span from breaking into a new line */
+  }
+
+  li {
+    font-size: 1.1rem;
+    line-height: 0.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.25s ease-in;
+  }
+
+  a:hover {
+    color: #beb7a4;
+  }
+</style>
