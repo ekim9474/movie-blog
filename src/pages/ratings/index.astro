@@ -9,22 +9,26 @@ import type {
 import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
 import RatingBox from "../../components/RatingBox.astro";
 
-interface paginationFix {}
+// interface paginationFix {}
 
-export const getStaticPaths = (async ({ paginate }) => {
-  const ratings = await getCollection("ratingsCollection");
-  ratings.sort(
-    (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
-  );
-  return paginate(ratings, { pageSize: 10 }); // Maps and splits 10 items per page
-}) satisfies GetStaticPaths;
+// export const getStaticPaths = (async ({ paginate }) => {
+//   const ratings = await getCollection("ratingsCollection");
+//   ratings.sort(
+//     (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+//   );
+//   return paginate(ratings, { pageSize: 10 }); // Maps and splits 10 items per page
+// }) satisfies GetStaticPaths;
 
-const { page } = Astro.props;
+// const { page } = Astro.props;
 
-// const ratings = await getCollection("ratingsCollection");
-// ratings.sort(
-//   (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
-// );
+// page.data.forEach((rating, index) => {
+//   console.log(`${rating.id}`);
+// });
+
+const ratings = await getCollection("ratingsCollection");
+ratings.sort(
+  (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+);
 ---
 
 <SplitScreenLayout>
@@ -35,7 +39,7 @@ const { page } = Astro.props;
     </p>
     <ul>
       {
-        page.data.map((rating) => (
+        ratings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
             <span class="inlineInfo">
@@ -48,11 +52,6 @@ const { page } = Astro.props;
         ))
       }
     </ul>
-    <div class="pageNav">
-      {page.url.prev && <a href={page.url.prev}>Previous</a>}
-      <span>Page {page.currentPage} of {page.lastPage}</span>
-      {page.url.next && <a href={page.url.next}>Next</a>}
-    </div>
   </div>
   <div class="rightContainer">
     <p>
@@ -80,7 +79,7 @@ const { page } = Astro.props;
   }
 
   li {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.1rem;
   }
 
@@ -100,7 +99,7 @@ const { page } = Astro.props;
 
   .rightContainer {
     max-width: 30%;
-    font-size: 0.975rem;
+    font-size: 1rem;
   }
 
   .pageNav {
