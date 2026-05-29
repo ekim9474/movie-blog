@@ -1,0 +1,28 @@
+---
+import GenLayout from "./GenLayout.astro";
+---
+
+<!-- Page layout that would support split in half -->
+<GenLayout>
+  <div class="genericContainer">
+    <slot />
+  </div>
+</GenLayout>
+
+<style>
+  .genericContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+    gap: 1%;
+  }
+
+  @media screen and (max-width: 860px) {
+    .genericContainer {
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+</style>

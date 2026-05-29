@@ -9,6 +9,7 @@ let genres = frontmatter.genres;
 ---
 
 <PageLayout>
+  <a href="/movie-blog/ratings/1"><p id="returnLink">RATINGS</p></a>
   <h1>{frontmatter.title}</h1>
   <div class="genreRow"></div>
   <BiggerRatingBox rating={frontmatter.rating} />
@@ -27,6 +28,10 @@ let genres = frontmatter.genres;
 
   h3 {
     font-size: 1.2em;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .descSect {
@@ -69,5 +74,14 @@ let genres = frontmatter.genres;
   .genreButton:hover {
     background-color: #e8edf2;
     color: black;
+  }
+
+  #returnLink {
+    font-size: 0.75rem;
+    color: white;
+  }
+
+  #returnLink:hover {
+    text-decoration: underline;
   }
 </style>
