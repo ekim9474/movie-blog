@@ -2,12 +2,13 @@
 import { getCollection, render } from "astro:content";
 
 import GenLayout from "../layouts/GenLayout.astro";
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import BlogCard from "../components/BlogCard.astro";
 import { Image } from "astro:assets";
 import LandingImage from "../assets/shots/umberto-d1.jpg";
 
 const posts = await getCollection("ratingsCollection");
+posts.sort((a, b) => Date.parse(b.data.watchDate) - Date.parse(a.data.watchDate))
+const latestPosts = posts.slice(0, 3);
 ---
 
 <GenLayout>
@@ -17,11 +18,23 @@ const posts = await getCollection("ratingsCollection");
     class="landingImage"
   />
 
-  <h1>Latest Blogs</h1>
-  <div class="postsGrid"></div>
+  <h1>Latest Reviews</h1>
+  <div class="postsGrid">
+    {
+      latestPosts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          director={post.data.director}
+          description={post.data.description}
+          id=`/movie-blog/ratings/${post.id}`
+        />
+      ))
+    }
+  </div>
 </GenLayout>
 
 <style>
+
   .landingImage {
     max-width: 100svw;
     height: auto;
@@ -29,7 +42,11 @@ const posts = await getCollection("ratingsCollection");
 
   .postsGrid {
     display: grid;
+    width: 90%;
+    justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-rows: 1fr auto;
+    column-gap: 1rem;
+    row-gap: 3rem;
   }
 </style>

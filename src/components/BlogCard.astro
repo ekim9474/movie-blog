@@ -1,0 +1,81 @@
+---
+const { title, director, description, id } = Astro.props;
+---
+
+<div class="blogCard">
+  <h2 class="title">{title}</h2>
+  <div class="body">
+    <!-- <p>{director}</p> -->
+    <p id="desc">{description}</p>
+  </div>
+  <div class="readButton"><a href={id}>Read</a></div>
+</div>
+
+<style>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .blogCard {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-wrap: balance;
+    overflow: hidden;
+    width: 70%;
+    height: 100%;
+    background-color: #a0c0e9;
+    color: black;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    padding: 3%;
+  }
+
+  #desc {
+    font-style: italic;
+  }
+
+  .title {
+    padding: 1rem;
+  }
+
+  .body {
+    flex-grow: 1;
+    padding: 0 1rem 1rem;
+    font-size: 0.975rem;
+    line-height: 1.5;
+  }
+
+  .readButton {
+    width: 20%;
+    height: auto;
+    align-self: center;
+    padding: 2%;
+    background-color: #547a95;
+    color: white;
+    transition:
+      background-color 0.25s ease-in,
+      color 0.25s ease-in;
+    border-radius: 5px;
+    font-family:
+      var(--font-lato),
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+    font-size: 1rem;
+  }
+
+  .readButton:hover {
+    background-color: #e8edf2;
+    color: black;
+  }
+</style>

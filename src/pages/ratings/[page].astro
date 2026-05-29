@@ -1,0 +1,128 @@
+---
+import { getCollection, render } from "astro:content";
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+import RatingBox from "../../components/RatingBox.astro";
+
+interface paginationFix {}
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const ratings = await getCollection("ratingsCollection");
+  ratings.sort(
+    (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+  );
+  return paginate(ratings, { pageSize: 10 }); // Maps and splits 10 items per page
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+// const ratings = await getCollection("ratingsCollection");
+// ratings.sort(
+//   (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+// );
+---
+
+<SplitScreenLayout>
+  <div class="leftContainer">
+    <h1>Ratings List</h1>
+    <p>
+      This place will contain all of the ratings that I already have completed.
+    </p>
+    <ul>
+      {
+        page.data.map((rating) => (
+          <li>
+            <a href={rating.id}>{rating.data.title}</a>
+            <span class="inlineInfo">
+              (Watch date: {rating.data.watchDate})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="pageNav">
+      {page.url.prev && <a href={page.url.prev}>Previous</a>}
+      <span>Page {page.currentPage} of {page.lastPage}</span>
+      {page.url.next && <a href={page.url.next}>Next</a>}
+    </div>
+  </div>
+  <div class="rightContainer">
+    <p>
+      Ratings here are determined on a 100-point scale. However, I try to avoid
+      using numbers between the tens as much as possible. If I do give a score
+      in between, it will likely be some number of 5 in between. The main
+      exception are the movies in the 91-100 range, as those are my favorites.
+      Don't take it as a metric for how long the reviews/analyses may be, as I
+      might write more for a terrible movie than one that is fantastic
+      sometimes.
+    </p>
+    <p>
+      I definitely rate arthouse movies differently from fun movies. It would be
+      pointless to compare the two, so you may see varying scores depending on
+      the movie.
+    </p>
+  </div>
+</SplitScreenLayout>
+
+<style>
+  li span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents the component inside the span from breaking into a new line */
+  }
+
+  li {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.25s ease-in;
+  }
+
+  a:hover {
+    color: #beb7a4;
+  }
+
+  .leftContainer {
+    max-width: 70%;
+  }
+
+  .rightContainer {
+    max-width: 30%;
+    font-size: 0.975rem;
+  }
+
+  .pageNav {
+    margin: auto;
+  }
+
+  .inlineInfo {
+    font-size: 0.9rem;
+    color: #faf6cf;
+  }
+
+  @media screen and (max-width: 860px) {
+    li {
+      line-height: 1.4rem;
+    }
+
+    .leftContainer {
+      max-width: 90%;
+    }
+
+    .rightContainer {
+      max-width: 76%;
+    }
+  }
+</style>
