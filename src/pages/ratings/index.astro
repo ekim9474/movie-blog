@@ -8,6 +8,7 @@ import type {
 
 import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
 import RatingBox from "../../components/RatingBox.astro";
+import { actions } from "astro:actions";
 
 // interface paginationFix {}
 
@@ -26,20 +27,168 @@ import RatingBox from "../../components/RatingBox.astro";
 // });
 
 const ratings = await getCollection("ratingsCollection");
-ratings.sort(
-  (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+// ratings.sort(
+//   (a, b) => Date.parse(a.data.watchDate) - Date.parse(b.data.watchDate),
+// );
+
+ratings.sort((a, b) => b.data.rating - a.data.rating);
+
+// ratings.forEach((rating, index) => console.log(rating.id));
+
+const topRatings = ratings.filter((rating) => rating.data.rating > 90);
+const bRatings = ratings.filter(
+  (rating) => rating.data.rating <= 90 && rating.data.rating > 80,
+);
+const cRatings = ratings.filter(
+  (rating) => rating.data.rating <= 80 && rating.data.rating > 70,
+);
+const dRatings = ratings.filter(
+  (rating) => rating.data.rating <= 70 && rating.data.rating > 60,
+);
+const fRatings = ratings.filter(
+  (rating) => rating.data.rating <= 60 && rating.data.rating > 40,
+);
+const trashRatings = ratings.filter((rating) => rating.data.rating <= 40);
+
+topRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
+);
+
+topRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
+);
+
+bRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
+);
+
+cRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
+);
+
+dRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
+);
+
+fRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
+);
+
+trashRatings.sort(
+  (a, b) =>
+    b.data.rating - a.data.rating || a.data.title.localeCompare(b.data.title),
 );
 ---
 
 <SplitScreenLayout>
   <div class="leftContainer">
     <h1>Ratings List</h1>
+    <div class="sectionList">
+      <a href="#Excellent"><p>91 - 100</p></a>
+      <p>|</p>
+      <a href="#Great"><p>81 - 90</p></a>
+      <p>|</p>
+      <a href="#VeryGood"><p>71 - 80</p></a>
+      <p>|</p>
+      <a href="#Good"><p>61 - 70</p></a>
+      <p>|</p>
+      <a href="#Average"><p>41 - 60</p></a>
+      <p>|</p>
+      <a href="#Terrible"><p>0 - 40</p></a>
+    </div>
     <p>
       This place will contain all of the ratings that I already have completed.
     </p>
+    <h2 id="Excellent">Excellent (91 - 100)</h2>
     <ul>
       {
-        ratings.map((rating) => (
+        topRatings.map((rating) => (
+          <li>
+            <a href={rating.id}>{rating.data.title}</a>
+            <span class="inlineInfo">
+              (Watch date: {rating.data.watchDate})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <h2 id="Great">Great (81 - 90)</h2>
+    <ul>
+      {
+        bRatings.map((rating) => (
+          <li>
+            <a href={rating.id}>{rating.data.title}</a>
+            <span class="inlineInfo">
+              (Watch date: {rating.data.watchDate})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <h2 id="VeryGood">Very Good (71 - 80)</h2>
+    <ul>
+      {
+        cRatings.map((rating) => (
+          <li>
+            <a href={rating.id}>{rating.data.title}</a>
+            <span class="inlineInfo">
+              (Watch date: {rating.data.watchDate})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <h2 id="Good">Good (61 - 70)</h2>
+    <ul>
+      {
+        dRatings.map((rating) => (
+          <li>
+            <a href={rating.id}>{rating.data.title}</a>
+            <span class="inlineInfo">
+              (Watch date: {rating.data.watchDate})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <h2 id="Average">Average (41 - 60)</h2>
+    <ul>
+      {
+        fRatings.map((rating) => (
+          <li>
+            <a href={rating.id}>{rating.data.title}</a>
+            <span class="inlineInfo">
+              (Watch date: {rating.data.watchDate})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <h2 id="Terrible">Terrible (0 - 40)</h2>
+    <ul>
+      {
+        trashRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
             <span class="inlineInfo">
@@ -100,6 +249,8 @@ ratings.sort(
   .rightContainer {
     max-width: 30%;
     font-size: 1rem;
+    padding-top: 4rem;
+    margin-bottom: auto;
   }
 
   .pageNav {
@@ -109,6 +260,13 @@ ratings.sort(
   .inlineInfo {
     font-size: 0.9rem;
     color: #faf6cf;
+  }
+
+  .sectionList {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+    gap: 0.5rem;
   }
 
   @media screen and (max-width: 860px) {
@@ -122,6 +280,7 @@ ratings.sort(
 
     .rightContainer {
       max-width: 76%;
+      padding-top: 0;
     }
   }
 </style>
