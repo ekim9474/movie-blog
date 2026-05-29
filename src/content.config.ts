@@ -9,7 +9,10 @@ import { z } from 'astro/zod';
 
 // 4. Define a `loader` and `schema` for each collection
 const ratingsCollection = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/pages/" }),
+  // uncomment this for dev environment testing
+  // loader: glob({ pattern: "**/*.md", base: "./src/pages/" }),
+  // works for live GitHub Pages
+  loader: glob({ pattern: "**/*.md", base: "./src/pages/ratings" }),
 });
 
 // 5. Export a single `collections` object to register your collection(s)
