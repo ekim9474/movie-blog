@@ -1,0 +1,28 @@
+<!-- ---
+import { getCollection, render } from "astro:content";
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const ratings = await getCollection("ratingsCollection");
+
+  return ratings.map((rating) => {
+    return {
+      params: { genre: rating.data.genres },
+      props: { rating },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { genre } = Astro.params;
+const { rating } = Astro.props;
+---
+
+<SplitScreenLayout>
+  <p>Genre: {rating.data.genres[0]}</p>
+</SplitScreenLayout> -->

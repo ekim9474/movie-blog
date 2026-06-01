@@ -1,0 +1,35 @@
+<!-- ---
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+
+import { getCollection } from "astro:content";
+
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("ratingsCollection");
+
+  const allTags = new Set(posts.flatMap((post) => post.data.genre));
+  return Array.from(allTags).map((tag) => {
+    const filteredPosts = posts.filter((post) =>
+      post.data.genres.includes(tag),
+    );
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<SplitScreenLayout>
+  <div class="leftContainer">
+    <h1>Tag: ${tag}</h1>
+  </div>
+  <div class="rightContainer"></div>
+</SplitScreenLayout>
+
+<style></style> -->
