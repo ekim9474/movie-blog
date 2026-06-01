@@ -1,0 +1,20 @@
+---
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+---
+
+<SplitScreenLayout>
+  <div class="leftContainer"></div>
+  <div class="rightContainer"></div>
+</SplitScreenLayout>
+
+<style>
+  .leftContainer {
+    max-width: 70%;
+  }
+
+  .rightContainer {
+    max-width: 30%;
+    margin-bottom: auto;
+    padding-top: 4rem;
+  }
+</style>

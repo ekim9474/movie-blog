@@ -6,10 +6,11 @@ import { Font } from "astro:assets";
 const { frontmatter } = Astro.props;
 
 let genres = frontmatter.genres;
+let tags = frontmatter.tags;
 ---
 
 <PageLayout>
-  <a href="/movie-blog/ratings/"><p id="returnLink">RATINGS</p></a>
+  <a href="/movie-blog/ratings"><p id="returnLink">RATINGS</p></a>
   <h1>{frontmatter.title}</h1>
   <div class="genreRow"></div>
   <BiggerRatingBox rating={frontmatter.rating} />
@@ -17,6 +18,10 @@ let genres = frontmatter.genres;
   {genres.map((genre: string) => <button class="genreButton">{genre}</button>)}
   <div class="mainText">
     <slot />
+  </div>
+  <p>Tags</p>
+  <div class="tagList">
+    {tags != null && tags.map((tag: string) => <div class="tagBtn">{tag}</div>)}
   </div>
 </PageLayout>
 
@@ -76,6 +81,32 @@ let genres = frontmatter.genres;
     color: black;
   }
 
+  .tagList {
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+    row-gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .tagBtn {
+    background-color: #547a95;
+    padding: 0.25rem;
+    transition:
+      background-color 0.25s ease-in,
+      color 0.25s ease-in;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .tagBtn:hover {
+    background-color: #e8edf2;
+    color: black;
+  }
+
   #returnLink {
     font-size: 0.75rem;
     color: white;
@@ -83,5 +114,11 @@ let genres = frontmatter.genres;
 
   #returnLink:hover {
     text-decoration: underline;
+  }
+
+  @media screen and (max-width: 440px) {
+    .tagList {
+      justify-content: center;
+    }
   }
 </style>

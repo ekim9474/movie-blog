@@ -33,7 +33,7 @@ const ratings = await getCollection("ratingsCollection");
 
 ratings.sort((a, b) => b.data.rating - a.data.rating);
 
-// ratings.forEach((rating, index) => console.log(rating.id));
+ratings.forEach((rating, index) => console.log(rating.id));
 
 const topRatings = ratings.filter((rating) => rating.data.rating > 90);
 const bRatings = ratings.filter(
@@ -89,31 +89,34 @@ trashRatings.sort(
 <SplitScreenLayout>
   <div class="leftContainer">
     <h1>Ratings List</h1>
-    <div class="sectionList">
-      <a href="#Excellent"><p>91 - 100</p></a>
-      <p>|</p>
-      <a href="#Great"><p>81 - 90</p></a>
-      <p>|</p>
-      <a href="#VeryGood"><p>71 - 80</p></a>
-      <p>|</p>
-      <a href="#Good"><p>61 - 70</p></a>
-      <p>|</p>
-      <a href="#Average"><p>41 - 60</p></a>
-      <p>|</p>
-      <a href="#Terrible"><p>0 - 40</p></a>
+    <div class="descSection">
+      <div class="sectionList">
+        <a href="#Excellent"><p>91 - 100</p></a>
+        <p>|</p>
+        <a href="#Great"><p>81 - 90</p></a>
+        <p>|</p>
+        <a href="#VeryGood"><p>71 - 80</p></a>
+        <p>|</p>
+        <a href="#Good"><p>61 - 70</p></a>
+        <p>|</p>
+        <a href="#Average"><p>41 - 60</p></a>
+        <p>|</p>
+        <a href="#Terrible"><p>0 - 40</p></a>
+      </div>
+      <p id="ratingsDesc">
+        This place will contain all of the ratings that I already have
+        completed. <span id="spoilReminder"
+          >Do not click the reviews if you do not want to be spoiled.</span
+        >
+      </p>
     </div>
-    <p>
-      This place will contain all of the ratings that I already have completed.
-    </p>
     <h2 id="Excellent">Excellent (91 - 100)</h2>
     <ul>
       {
         topRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
-            <span class="inlineInfo">
-              (Watch date: {rating.data.watchDate})
-            </span>
+            <span class="inlineInfo">(dir. {rating.data.director})</span>
             <span>
               <RatingBox rating={rating.data.rating} />
             </span>
@@ -127,9 +130,7 @@ trashRatings.sort(
         bRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
-            <span class="inlineInfo">
-              (Watch date: {rating.data.watchDate})
-            </span>
+            <span class="inlineInfo">(dir. {rating.data.director})</span>
             <span>
               <RatingBox rating={rating.data.rating} />
             </span>
@@ -143,9 +144,7 @@ trashRatings.sort(
         cRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
-            <span class="inlineInfo">
-              (Watch date: {rating.data.watchDate})
-            </span>
+            <span class="inlineInfo">(dir. {rating.data.director})</span>
             <span>
               <RatingBox rating={rating.data.rating} />
             </span>
@@ -159,9 +158,7 @@ trashRatings.sort(
         dRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
-            <span class="inlineInfo">
-              (Watch date: {rating.data.watchDate})
-            </span>
+            <span class="inlineInfo">(dir. {rating.data.director})</span>
             <span>
               <RatingBox rating={rating.data.rating} />
             </span>
@@ -175,9 +172,7 @@ trashRatings.sort(
         fRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
-            <span class="inlineInfo">
-              (Watch date: {rating.data.watchDate})
-            </span>
+            <span class="inlineInfo">(dir. {rating.data.director})</span>
             <span>
               <RatingBox rating={rating.data.rating} />
             </span>
@@ -191,9 +186,7 @@ trashRatings.sort(
         trashRatings.map((rating) => (
           <li>
             <a href={rating.id}>{rating.data.title}</a>
-            <span class="inlineInfo">
-              (Watch date: {rating.data.watchDate})
-            </span>
+            <span class="inlineInfo">(dir. {rating.data.director})</span>
             <span>
               <RatingBox rating={rating.data.rating} />
             </span>
@@ -269,6 +262,19 @@ trashRatings.sort(
     gap: 0.5rem;
   }
 
+  .descSection {
+  }
+
+  #spoilReminder {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #ff5f15;
+  }
+
+  #ratingsDesc {
+    max-width: 80%;
+  }
+
   @media screen and (max-width: 860px) {
     li {
       line-height: 1.4rem;
@@ -281,6 +287,10 @@ trashRatings.sort(
     .rightContainer {
       max-width: 76%;
       padding-top: 0;
+    }
+
+    #ratingsDesc {
+      max-width: 100%;
     }
   }
 </style>

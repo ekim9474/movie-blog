@@ -1,13 +1,15 @@
 ---
-import GenLayout from "../../layouts/GenLayout.astro";
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+import LinkButtonDiv from "../../components/LinkButtonDiv.astro";
 ---
 
-<GenLayout>
-  <div class="listContainer">
+<SplitScreenLayout>
+  <div class="leftContainer">
     <h1>Lists</h1>
     <p>
-      Come check out my <a href="movie-blog/lists/watchlist" id="watchlist"
-        >watchlist</a
+      Come check out my <a
+        href="/movie-blog/lists/master-watchlist"
+        id="watchlist">master watchlist</a
       >!
     </p>
     <div class="listDivider">
@@ -25,6 +27,12 @@ import GenLayout from "../../layouts/GenLayout.astro";
     </div>
     <div class="listDivider">
       <h3>By Difficulty</h3>
+      <ul>
+        <li>The Crowd-Pleaser: Movies that Seek to Entertain</li>
+        <li>Crossing the Barrier: Intersection between Art and Pleasure</li>
+        <li>One Step Towards Cinephilia: Dabbling in the Arthouse</li>
+        <li>The Inaccessible and Provocative: High Art Movies</li>
+      </ul>
     </div>
     <div class="listDivider">
       <h3>Miscellaneous</h3>
@@ -38,10 +46,20 @@ import GenLayout from "../../layouts/GenLayout.astro";
         <li>
           The Crazy World of the Avant-Garde <span class="newText">New</span>
         </li>
+        <li></li>
       </ul>
     </div>
   </div>
-</GenLayout>
+  <div class="rightContainer">
+    <p>
+      These are the different lists I'm creating. These will mainly be
+      compilations of movies that fit a certain theme, like the filmmaking
+      movement they're associated with or the time period. Sometimes, however,
+      it may be hyperfocused compilations pointing to specific aspects of film.
+    </p>
+    <!-- <LinkButtonDiv /> -->
+  </div>
+</SplitScreenLayout>
 
 <style>
   a {
@@ -49,10 +67,19 @@ import GenLayout from "../../layouts/GenLayout.astro";
     color: white;
   }
 
-  .listContainer {
-    width: 60%;
-    height: 100%;
+  li {
     font-size: 1.15rem;
+  }
+
+  .leftContainer {
+    max-width: 70%;
+    font-size: 1rem;
+  }
+
+  .rightContainer {
+    max-width: 30%;
+    padding-top: 4rem;
+    margin-bottom: auto;
   }
 
   .listDivider {
@@ -71,5 +98,20 @@ import GenLayout from "../../layouts/GenLayout.astro";
 
   #watchlist:hover {
     color: #f7b980;
+  }
+
+  @media screen and (max-width: 860px) {
+    li {
+      line-height: 1.4rem;
+    }
+
+    .leftContainer {
+      max-width: 90%;
+    }
+
+    .rightContainer {
+      max-width: 76%;
+      padding-top: 0;
+    }
   }
 </style>
