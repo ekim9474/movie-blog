@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# experimental folders
+src/pages/genres
+src/pages/directors
+src/pages/tags
