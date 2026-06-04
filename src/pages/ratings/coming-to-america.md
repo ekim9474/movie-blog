@@ -6,11 +6,8 @@ watchDate: 04/21/2026
 description: Coming to America is a comedic classic that wins you over with a heartfelt romance and internal conflict.
 rating: 80
 genres:
-  - Comedy
+  - comedy
 tags:
-  - American Classics
-  - American Classics
-  - American Classics
   - American Classics
 ---
 

@@ -24,6 +24,5 @@ pnpm-debug.log*
 .idea/
 
 # experimental folders
-src/pages/genres
 src/pages/directors
 src/pages/tags

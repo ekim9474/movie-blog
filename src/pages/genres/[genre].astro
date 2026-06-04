@@ -1,0 +1,101 @@
+---
+import { getCollection, render } from "astro:content";
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+import RatingBox from "../../components/RatingBox.astro";
+
+export const getStaticPaths = (async () => {
+  const ratings = await getCollection("ratingsCollection");
+  const allGenres = [
+    ...new Set(ratings.flatMap((rating) => rating.data.genres)),
+  ];
+//   const allGenresLower = [...new Set([...allGenres].map(g => g.toLowerCase()))]
+
+
+  return allGenres.map((genre) => {
+    return {
+      params: { genre: genre },
+      props: {
+        ratingsSubset: ratings.filter((rating) =>
+          rating.data.genres.includes(genre),
+        ).sort(),
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { genre } = Astro.params;
+const { ratingsSubset } = Astro.props;
+
+// console.log("Genre is ", genre)
+
+// let id = ratingsSubset.map((rating) => console.log(rating.id))
+// console.log(genre)
+
+// capitalization function for display
+const capitalizeTitle = (g: string) => {
+    if (g == 'lgbtq+') {
+        return 'LGBTQ+';
+    }
+    else {
+        return g.charAt(0).toUpperCase() + g.slice(1)
+    }
+}
+---
+
+<SplitScreenLayout>
+  <div class="leftContainer">
+    <h1>Genre: {capitalizeTitle(genre)}</h1>
+    <ul>
+      {
+        ratingsSubset.map((rating) => (
+          <li>
+            <a href=`/movie-blog/${rating.id}`>{rating.data.title}</a>
+            <span class="inlineInfo">
+                (dir. {rating.data.director})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="rightContainer"></div>
+</SplitScreenLayout>
+
+<style>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  li span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents the component inside the span from breaking into a new line */
+  }
+
+  li {
+    font-size: 1.15rem;
+  }
+
+  .leftContainer {
+    width: 70%;
+  }
+
+  .rightContainer {
+    width: 30%;
+  }
+
+  .inlineInfo {
+    font-size: 0.9rem;
+    color: #faf6cf;
+  }
+</style>
