@@ -15,6 +15,10 @@ const capitalizeGenre = (g: string) => {
     return g.charAt(0).toUpperCase() + g.slice(1)
   }
 }
+
+const tagDisplay = (t: string) => {
+  return t.replaceAll("-", " ");
+};
 ---
 
 <PageLayout>
@@ -32,7 +36,7 @@ const capitalizeGenre = (g: string) => {
   {tags != null && <p>Tags</p>}
   <div class="tagList">
     <!-- {tags != null && tags.map((tag: string) => <a href=`/movie-blog/tags/${tag}`><div class="tagBtn">{tag}</div></a>)} -->
-    {tags != null && tags.map((tag: string) => <div class="tagBtn">{tag}</div>)}
+    {tags != null && tags.map((tag: string) => <a href=`/movie-blog/tags/${tag}`><div class="tagBtn">{tagDisplay(tag)}</div></a>)}
   </div>
 </PageLayout>
 
@@ -48,6 +52,7 @@ const capitalizeGenre = (g: string) => {
 
   a {
     text-decoration: none;
+    color: white;
   }
 
   .descSect {
