@@ -6,7 +6,7 @@ watchDate: 05/31/2026
 description: Still Life is a devastating experience whose minimalism exposes the compounding bleakness of old age.
 rating: 90
 genres:
-  - Drama
+  - drama
 tags:
   - Slow Cinema
   - YouTube

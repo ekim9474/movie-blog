@@ -6,8 +6,8 @@ watchDate: 05/12/2026
 description: All About Lily Chou-Chou intertwines fleeting moments of beauty with utmost cruelty to depict Japanese teenage life.
 rating: 90
 genres:
-  - Drama
-  - Music
+  - drama
+  - music
 tags:
   - Kanopy
 ---

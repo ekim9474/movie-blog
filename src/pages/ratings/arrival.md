@@ -6,8 +6,8 @@ watchDate: 05/15/2026
 description: Arrival masks some of its cliche story with mind-bending narrative and beautiful shot compositions.
 rating: 70
 genres:
-  - Drama
-  - Romance
+  - drama
+  - romance
 ---
 
 I have to go against the grain here. I thought that Arrival would be a beautiful watch, but what I was left with was a cliched story that is just missing something in its delivery. To its credit, the sound design and shot composition alone evoke feelings of mystery, of loneliness, of tension to great effect. I definitely am sympathetic to those who felt the pacing was too slow, and it did not evoke as much of an emotional reaction as I would have hoped. Who doesn't love when half of those emotional scenes are just Amy Adams staring at something?

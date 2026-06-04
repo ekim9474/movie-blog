@@ -6,8 +6,8 @@ watchDate: 04/21/2026
 description: Amarcord, as an introduction into Fellini's works, is a fantastic movie detailing the reality of childhood.
 rating: 95
 genres:
-  - Comedy
-  - Drama
+  - comedy
+  - drama
 tags:
   - Criterion
   - International Classics
