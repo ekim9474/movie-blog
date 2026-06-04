@@ -8,8 +8,10 @@ rating: 90
 genres:
   - drama
 tags:
-  - Slow Cinema
-  - YouTube
+  - slow-cinema
+  - youtube
+  - obscure
+  - arthouse
 ---
 
 I am shocked at how obscure Still Life is. Still Life is a devastating watch built upon a minimalistic framework. It is a harsh reminder of old age, expressing the inescapable feebleness of old age. Shahid-Saless initially shows an elderly couple going through the motions in an effort to survive. This dullness inundates the very display of every shot: the skies are gray, their home is washed in a dilapidated blue, the older characters hobble slowly from end to end within a frame. The first part of the film is a laconic passage of their lives, a routine that in and of itself feels incarcerating. Mohammed closes and lifts the gate, then returns home to tea and dinner. Mohammed's wife's life feels even more restrictive than Mohammed's, stuck inside her house in a repetitive lifestyle of traditional domesticity.

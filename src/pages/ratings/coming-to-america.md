@@ -8,7 +8,7 @@ rating: 80
 genres:
   - comedy
 tags:
-  - American Classics
+  - american-classics
 ---
 
 Coming to America is hailed as one of the funniest comedies of the 1980's, and it is easy to see why. There are so many memorable moments and quotable lines in the movie, Eddie Murphy and Arsenio Hall play a million different characters like clockwork, and the absurdity of their culture shock in Queens hits you like a freight train. The repetition of different bits, from the McDowell's knockoff to the barber shop conversations, breathe humorous life into its world. The side characters like Cleo and Reverend Brown get the personalities and attention that deserve, and they are not disposed for the sake of narrative. I have to also mention the surprisingly wonderful visuals, contrasting the run-down neighborhoods of Queens from the colorful enormity of the royal palace. It may be stereotype humor, sure, but they thread it in with such precision and comicality that it only produces laughs. Semmi plays the foil to Akeem brilliantly. Unlike Akeem, he is both comfortable with the life back home and unbothered by his elevated social position.

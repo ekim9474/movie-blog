@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from "astro:content";
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+
+import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+import RatingBox from "../../components/RatingBox.astro";
+
+export const getStaticPaths = (async () => {
+  const ratings = await getCollection("ratingsCollection");
+  const allTags = [
+    ...new Set(ratings.flatMap((rating) => rating.data.tags === undefined ? [] : rating.data.tags)),
+  ];
+
+
+  return allTags.map((tag) => {
+    return {
+      params: { tag: tag },
+      props: {
+        ratingsSubset: ratings.filter((rating) =>
+          rating.data.tags?.includes(tag),
+        )
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.params;
+const { ratingsSubset } = Astro.props;
+
+console.log("Tag is", tag)
+
+let id = ratingsSubset.map((rating) => console.log(rating.id))
+console.log(tag)
+
+const tagDisplay = (t: string) => {
+    let wordArr = t.replaceAll('-', ' ').split(' ')
+    let wordMap = wordArr.map((word: string) => {
+        // carve out some exceptions
+        if (word == 'lgbtq+') {
+            return 'LGBTQ+';
+        }
+        else {
+            word.charAt(0).toUpperCase() + word.slice(1)
+        }
+    })
+
+    return wordMap.join(' ')
+}   
+
+---
+
+<SplitScreenLayout>
+  <div class="leftContainer">
+    <h1>Tag: {tagDisplay(tag)}</h1>
+    <ul>
+      {
+        ratingsSubset.map((rating) => (
+          <li>
+            {/* dev environment */}
+            {/* <a href=`/movie-blog/${rating.id}`>{rating.data.title}</a> */}
+            { /* GitHub Pages live */ }
+            <a href=`/movie-blog/tags/${rating.id}`>{rating.data.title}</a>
+            <span class="inlineInfo">
+                (dir. {rating.data.director})
+            </span>
+            <span>
+              <RatingBox rating={rating.data.rating} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="rightContainer"></div>
+</SplitScreenLayout>
+
+<style>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  li span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents the component inside the span from breaking into a new line */
+  }
+
+  li {
+    font-size: 1.15rem;
+  }
+
+  .leftContainer {
+    width: 70%;
+  }
+
+  .rightContainer {
+    width: 30%;
+  }
+
+  .inlineInfo {
+    font-size: 0.9rem;
+    color: #faf6cf;
+  }
+</style>
