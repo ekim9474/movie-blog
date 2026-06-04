@@ -37,18 +37,24 @@ let id = ratingsSubset.map((rating) => console.log(rating.id))
 console.log(tag)
 
 const tagDisplay = (t: string) => {
-    let wordArr = t.replaceAll('-', ' ').split(' ')
-    let wordMap = wordArr.map((word: string) => {
-        // carve out some exceptions
-        if (word == 'lgbtq+') {
-            return 'LGBTQ+';
-        }
-        else {
-            word.charAt(0).toUpperCase() + word.slice(1)
-        }
-    })
+    // does not work on live page for some reason
+    // let wordArr = t.replaceAll('-', ' ').split(' ');
+    // let wordMap = wordArr.map((word: string) => {
+    //     // carve out some exceptions
+    //     if (word == 'lgbtq+') {
+    //         return 'LGBTQ+';
+    //     }
+    //     else {
+    //         word.charAt(0).toUpperCase() + word.slice(1)
+    //     }
+    // })
 
-    return wordMap.join(' ')
+    if (t == 'lgbtq+') {
+        return 'LGBTQ+';
+    }
+
+    return t.charAt(0).toUpperCase() + t.slice(1);
+    
 }   
 
 ---
