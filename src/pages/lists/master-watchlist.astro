@@ -1,20 +1,100 @@
 ---
 import SplitScreenLayout from "../../layouts/SplitScreenLayout.astro";
+import { fullWatchlist } from "../../data/watchlistData.ts";
+
+const unwatchedFilms = Object.fromEntries(
+  Object.entries(fullWatchlist).filter(([key, value]) => !value.watched),
+);
+
+const watchedFilms = Object.fromEntries(
+  Object.entries(fullWatchlist).filter(([key, value]) => value.watched),
+);
 ---
 
 <SplitScreenLayout>
-  <div class="leftContainer"></div>
-  <div class="rightContainer"></div>
+  <div class="leftContainer">
+    <h1>Master Watchlist</h1>
+    <a href="#watchedSect"><p id="watchedNav">Navigate to Watched</p></a>
+    <p id="desc">
+      This is a comprehensive list of all of the movies that I have on my
+      watchlist. Satisfied entries will be bolded in green.
+    </p>
+    <ul>
+      {
+        Object.entries(unwatchedFilms)
+          .sort(([, a], [, b]) => a.movieName.localeCompare(b.movieName))
+          .map(([key, value]) => (
+            <li>
+              {value.movieName} ({value.year})
+            </li>
+          ))
+      }
+    </ul>
+    <h2 id="watchedSect">Watched</h2>
+    <ul>
+      {
+        Object.entries(watchedFilms)
+          .sort(([, a], [, b]) => a.movieName.localeCompare(b.movieName))
+          .map(([key, value]) => (
+            <li class="watchedText">
+              {value.movieName} ({value.year})
+            </li>
+          ))
+      }
+    </ul>
+  </div>
+  <div class="rightContainer">
+    <p>
+      I wanted to have a massive list of all of my watchlist items. There will
+      be no categorization, and will all be in alphabetical order. I will
+      probably siphon off parts of this master watchlist into other lists,
+      listed below.
+    </p>
+  </div>
 </SplitScreenLayout>
 
 <style>
+  li span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents the component inside the span from breaking into a new line */
+  }
+
+  li {
+    font-size: 1.15rem;
+    line-height: 1.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    transition: 0.25s color ease-in-out;
+  }
+
+  a:hover {
+    color: grey;
+  }
+
   .leftContainer {
-    max-width: 70%;
+    width: 70%;
   }
 
   .rightContainer {
-    max-width: 30%;
+    width: 30%;
     margin-bottom: auto;
     padding-top: 4rem;
+  }
+
+  .watchedText {
+    /* color: #b2d4b6; */
+    font-weight: lighter;
+  }
+
+  #desc {
+    max-width: 80%;
+  }
+
+  #watchedNav {
+    font-size: 0.8rem;
   }
 </style>

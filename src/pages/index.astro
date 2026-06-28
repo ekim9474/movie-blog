@@ -11,7 +11,7 @@ posts.sort((a, b) => Date.parse(b.data.watchDate) - Date.parse(a.data.watchDate)
 const latestPosts = posts.slice(0, 3);
 ---
 
-<GenLayout>
+<GenLayout title="Welcome to Elliot's Movie Blog!">
   <Image
     src={LandingImage}
     alt="Mr. Umberto begs, Umberto D. (1952)"
@@ -26,7 +26,7 @@ const latestPosts = posts.slice(0, 3);
           title={post.data.title}
           director={post.data.director}
           description={post.data.description}
-          id=`/movie-blog/ratings/${post.id}`
+          id=`/movie-blog/${post.id}`
         />
       ))
     }
