@@ -1,9 +1,11 @@
 ---
 import GenLayout from "./GenLayout.astro";
+
+const { title } = Astro.props;
 ---
 
 <!-- realized that this most pages will follow this format, so this will avoid breaking things already using GenLayout -->
-<GenLayout>
+<GenLayout title={title}>
   <div class="genericContainer">
     <slot />
   </div>

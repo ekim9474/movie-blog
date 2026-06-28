@@ -49,17 +49,13 @@ const tagDisplay = (t: string) => {
     //     }
     // })
 
-    if (t == 'lgbtq+') {
-        return 'LGBTQ+';
-    }
-
-    return t.charAt(0).toUpperCase() + t.slice(1);
+    return t.replaceAll('-', ' ')
     
 }   
 
 ---
 
-<SplitScreenLayout>
+<SplitScreenLayout title=`Tag: ${tagDisplay(tag)}`>
   <div class="leftContainer">
     <h1>Tag: {tagDisplay(tag)}</h1>
     <ul>

@@ -1,8 +1,9 @@
 ---
 const { rating } = Astro.props;
 
-const badVal = rating < 40;
-const okVal = rating >= 40 && rating < 70;
+const terribleVal = rating <= 20;
+const badVal = rating > 20 && rating <= 40;
+const okVal = rating > 40 && rating < 70;
 const goodVal = rating >= 70 && rating < 90;
 const excelVal = rating >= 90;
 
@@ -12,6 +13,7 @@ const excelVal = rating >= 90;
 <div
   class:list={[
     "ratingBox",
+    { terribleStyle: terribleVal },
     { badStyle: badVal },
     { okStyle: okVal },
     { goodStyle: goodVal },
@@ -37,8 +39,12 @@ const excelVal = rating >= 90;
     border-radius: 10px;
   }
 
-  .badStyle {
+  .terribleStyle {
     background-color: red;
+  }
+
+  .badStyle {
+    background-color: #db4c00;
   }
 
   .okStyle {

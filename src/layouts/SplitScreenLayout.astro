@@ -1,9 +1,11 @@
 ---
 import GenLayout from "./GenLayout.astro";
+
+const { title } = Astro.props;
 ---
 
 <!-- Page layout that would support split in half -->
-<GenLayout>
+<GenLayout title={title}>
   <div class="genericContainer">
     <slot />
   </div>
