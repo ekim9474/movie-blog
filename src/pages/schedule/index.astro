@@ -1,0 +1,79 @@
+---
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout title="Movie Schedule">
+  <div class="aboutContainer">
+    <div class="section">
+      <h1>Movie Schedule</h1>
+      <p>
+        Implementing a Google Calendar window embedded in this page, in order to
+        show what I might want to watch. May swap it out for a more native
+        solution later.
+      </p>
+    </div>
+    <div class="section" id="iframeSection">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=5ab8c04680af4e202cfec6d6a81c756279dc4e2e3e72a1a6e2492c24cc84726f%40group.calendar.google.com&ctz=UTC"
+        style="border: 0"
+        id="calendarFrame"></iframe>
+    </div>
+  </div>
+
+  <!-- fallback content for if iframe fails to load -->
+  <script>
+    const iframeElement = document.getElementById("calendarFrame");
+    const iframeDiv = document.getElementById("iframeSection");
+
+    const timeoutFct = setTimeout(() => {
+      if (iframeDiv) {
+        iframeDiv.innerHTML = `<div class="section">
+            <p>iFrame failed to load, use link instead:</p>
+            <a href='https://calendar.google.com/calendar/u/2?cid=NWFiOGMwNDY4MGFmNGUyMDJjZmVjNmQ2YTgxYzc1NjI3OWRjNGUyZTNlNzJhMWE2ZTI0OTJjMjRjYzg0NzI2ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t'></a>
+            </div>`;
+      }
+    }, 10000);
+
+    if (iframeElement) {
+      iframeElement.onload = () => {
+        clearTimeout(timeoutFct);
+        console.log("iframe loaded");
+      };
+    }
+  </script>
+
+  <style>
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    iframe {
+      width: 100%;
+      height: 60vh;
+    }
+
+    .baseImage {
+      max-width: 90svw;
+      height: auto;
+      align-self: center;
+    }
+
+    .aboutContainer {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section {
+      width: 100%;
+    }
+
+    @media screen and (min-width: 1020px) {
+      .aboutContainer {
+        width: 50%;
+      }
+    }
+  </style>
+</GenLayout>
