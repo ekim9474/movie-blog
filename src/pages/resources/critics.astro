@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout title="Critics I Like">
+  <div class="aboutContainer">
+    <div class="section">
+      <h1>Film Critics</h1>
+      <p>I'm inspired to write about movies from these folks.</p>
+    </div>
+
+    <div class="Section">
+      <h2>Critics List</h2>
+      <ul></ul>
+    </div>
+  </div>
+
+  <style>
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .baseImage {
+      max-width: 90svw;
+      height: auto;
+      align-self: center;
+    }
+
+    .aboutContainer {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section {
+      width: 100%;
+    }
+
+    @media screen and (min-width: 1020px) {
+      .aboutContainer {
+        width: 50%;
+      }
+    }
+  </style>
+</GenLayout>
