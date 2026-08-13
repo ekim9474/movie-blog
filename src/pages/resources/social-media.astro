@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout title="Social Media">
+  <div class="aboutContainer">
+    <div class="section">
+      <h1>Social Media Accounts</h1>
+      <p>
+        I wanted to highlight some social media accounts from which I pull
+        recommendations from or from which I get inspired to write.
+      </p>
+    </div>
+
+    <div class="Section">
+      <h2>Letterboxd Accounts</h2>
+      <ul>
+        <li><a href="https://letterboxd.com/onopun/"><b>onopun</b></a></li>
+        <li>
+          <a href="https://letterboxd.com/franciscomehmet/"
+            ><b>Francisco Mehmet Dos Santos</b></a
+          >
+        </li>
+        <li>
+          <a href="https://letterboxd.com/noir1946/"><b>noir1946</b></a>
+        </li>
+        <li>
+          <a href="https://letterboxd.com/noel07/"><b>noel07</b></a>
+        </li>
+        <li>
+          <a href="https://letterboxd.com/matt_thomas10/"><b>Matt Thomas</b></a>
+        </li>
+        <li>
+          <a href="https://letterboxd.com/songofera/"><b>eira</b></a>
+        </li>
+        <li>
+          <a href="https://letterboxd.com/theironcupcake/"
+            ><b>theironcupcake</b></a
+          >
+        </li>
+        <li>
+          <a href="https://letterboxd.com/cvall96/"><b>Carlos Valladares</b></a>
+        </li>
+        <li>
+          <a href="https://letterboxd.com/lencho_o_t_apes/"
+            ><b>Lencho of the Apes</b></a
+          >
+        </li>
+        <li>
+          <a href="https://letterboxd.com/ayubnor/"><b>Ayub Nor</b></a>
+        </li>
+        <li>
+          <a href="https://letterboxd.com/bryterleiter/"
+            ><b>Richard Chandler</b></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="Section">
+      <h2>YouTube Accounts</h2>
+      <ul>
+        <li>
+          <a href="https://www.youtube.com/@EyebrowCinema"
+            ><b>Eyebrow Cinema</b></a
+          >
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@TheHouseofTabula"
+            ><b>The House of Tabula</b></a
+          >
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@kubricklynch"
+            ><b>kubricklynch - Film History by Evan Chester</b></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</GenLayout>
+
+<style>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .baseImage {
+    max-width: 90svw;
+    height: auto;
+    align-self: center;
+  }
+
+  .aboutContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1020px) {
+    .aboutContainer {
+      width: 50%;
+    }
+  }
+</style>

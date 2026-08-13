@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout title="Resources">
+  <div class="aboutContainer">
+    <div class="section">
+      <h1>Film Resources</h1>
+      <p>
+        When I want to learn about film theory or the filmmaking process, I will
+        likely use these resources.
+      </p>
+    </div>
+
+    <div class="Section">
+      <h2>Film Theory and Analysis</h2>
+      <ul>
+        <li>
+          <a
+            href="https://15orient.com/files/bresson-notes-on-cinematography.pdf"
+            ><b>Bresson's Notes on Cinematography</b></a
+          >
+        </li>
+        <li>
+          <a href="https://media-studies.com/eisenstein-montage/"
+            ><b>Sergei Eisenstein and Montage</b></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="Section">
+      <h2>Filmmaking and Physical Media</h2>
+      <ul>
+        <li><a href="https://letterboxd.com/onopun/"><b>onopun</b></a></li>
+      </ul>
+    </div>
+
+    <div class="Section">
+      <h2>Websites</h2>
+      <ul>
+        <li>
+          <a href="https://www.search-criteria.com/"
+            ><b>Criteria: A Criterion Channel Companion</b></a
+          >
+        </li>
+        <li>
+          <a href="https://the-criterion-closet.vercel.app/#closet"
+            ><b>The Closet</b></a
+          >
+        </li>
+        <li>
+          <a href="https://www.kino-polis.com/"><b>Kino-polis</b></a>
+        </li>
+        <li>
+          <a href="https://www.gartenbergmedia.com/"><b>Gartenberg Media</b></a>
+        </li>
+        <li>
+          <a href="https://ultradogme.com/"><b>Ultra Dogme</b></a>
+        </li>
+        <li>
+          <a href="https://theinsert.substack.com/"
+            ><b>The Insert | Substack</b></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</GenLayout>
+
+<style>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .baseImage {
+    max-width: 90svw;
+    height: auto;
+    align-self: center;
+  }
+
+  .aboutContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1020px) {
+    .aboutContainer {
+      width: 50%;
+    }
+  }
+</style>
