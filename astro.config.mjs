@@ -8,7 +8,7 @@ export default defineConfig({
     cssVariable: "--font-lato",
     fallbacks: ["system-ui"]
   }],
-  site: 'https://https://ekim9474.github.io',
-  base: '/movie-blog'
+  site: 'https://elliotsmovieblog.com'
+  // base: ''
 });
 

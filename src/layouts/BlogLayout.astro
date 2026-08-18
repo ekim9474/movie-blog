@@ -22,21 +22,21 @@ const tagDisplay = (t: string) => {
 ---
 
 <PageLayout title=`${frontmatter.title}`>
-  <a href="/movie-blog/ratings"><p id="returnLink">RATINGS</p></a>
+  <a href="/ratings"><p id="returnLink">RATINGS</p></a>
   <h1>{frontmatter.title}</h1>
   <div class="genreRow"></div>
   <BiggerRatingBox rating={frontmatter.rating} />
   <h3 class="descSect">{frontmatter.description ?? "Placeholder until I think of a synopsis"}</h3>
   <div class="genreRow">
-    {genres.sort().map((genre: string) => <a href=`/movie-blog/genres/${genre}`><div class="genreButton">{capitalizeGenre(genre)}</div></a>)}
+    {genres.sort().map((genre: string) => <a href=`/genres/${genre}`><div class="genreButton">{capitalizeGenre(genre)}</div></a>)}
   </div>
   <div class="mainText">
     <slot />
   </div>
   {tags != null && <p>Tags</p>}
   <div class="tagList">
-    <!-- {tags != null && tags.sort().map((tag: string) => <a href=`/movie-blog/tags/${tag}`><div class="tagBtn">{tag}</div></a>)} -->
-    {tags != null && tags.sort().map((tag: string) => <a href=`/movie-blog/tags/${tag}`><div class="tagBtn">{tagDisplay(tag)}</div></a>)}
+    <!-- {tags != null && tags.sort().map((tag: string) => <a href=`/tags/${tag}`><div class="tagBtn">{tag}</div></a>)} -->
+    {tags != null && tags.sort().map((tag: string) => <a href=`/tags/${tag}`><div class="tagBtn">{tagDisplay(tag)}</div></a>)}
   </div>
 </PageLayout>
 

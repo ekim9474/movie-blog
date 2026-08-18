@@ -1,10 +1,10 @@
 <div class="header-container">
-  <h3><a href="/movie-blog">Elliot's Movie Blog</a></h3>
+  <h3 id="logo"><a href="">Elliot's Movie Blog</a></h3>
   <div class="buttons">
-    <a href="/movie-blog/about">About</a>
-    <a href="/movie-blog/lists">Lists</a>
-    <a href="/movie-blog/ratings">Ratings</a>
-    <a href="/movie-blog/portal">Portal</a>
+    <a href="/about">About</a>
+    <a href="/lists">Lists</a>
+    <a href="/ratings">Ratings</a>
+    <a href="/portal">Portal</a>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
     margin-right: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .buttons {
@@ -42,9 +42,20 @@
     color: #d0dde3;
   }
 
+  #logo {
+  }
+
   @media screen and (min-width: 200px) and (max-width: 450px) {
     .header-container {
       font-size: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 375px) {
+    .header-container {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
   }
 

@@ -1,0 +1,83 @@
+---
+import GenLayout from "../../layouts/GenLayout.astro";
+---
+
+<GenLayout title="Movie Schedule">
+  <div class="aboutContainer">
+    <div class="section">
+      <h1>Movie Schedule</h1>
+      <p>
+        Implementing a Google Calendar window embedded in this page, in order to
+        show what I might want to watch. May swap it out for a more native
+        solution later.
+      </p>
+    </div>
+    <div class="section" id="iframeSection">
+      <iframe
+        src="https://wheelofnames.com/aw9-8qm"
+        style="border: 0"
+        id="wheelFrame"></iframe>
+    </div>
+  </div>
+
+  <!-- fallback content for if iframe fails to load -->
+  <script>
+    const iframeElement = document.getElementById("wheelFrame");
+    const iframeDiv = document.getElementById("iframeSection");
+
+    const timeoutFct = setTimeout(() => {
+      if (iframeDiv) {
+        iframeDiv.innerHTML = `<div class="section">
+            <p>iFrame failed to load, use link instead:</p>
+            <a href='https://wheelofnames.com/aw9-8qm'>Link</a>
+            </div>`;
+      }
+    }, 10000);
+
+    if (iframeElement) {
+      iframeElement.onload = () => {
+        clearTimeout(timeoutFct);
+        console.log("iframe loaded");
+      };
+    }
+  </script>
+
+  <style>
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    iframe {
+      width: 100%;
+      height: 60vh;
+    }
+
+    .baseImage {
+      max-width: 90svw;
+      height: auto;
+      align-self: center;
+    }
+
+    .aboutContainer {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section {
+      width: 100%;
+    }
+
+    #iframeSection {
+      background-color: white;
+    }
+
+    @media screen and (min-width: 1020px) {
+      .aboutContainer {
+        width: 50%;
+      }
+    }
+  </style>
+</GenLayout>
