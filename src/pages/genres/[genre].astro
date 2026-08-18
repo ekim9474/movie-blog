@@ -56,9 +56,9 @@ const capitalizeTitle = (g: string) => {
         ratingsSubset.map((rating) => (
           <li>
             {/* dev environment */}
-            {/* <a href=`/movie-blog/${rating.id}`>{rating.data.title}</a> */}
+            {/* <a href=`/${rating.id}`>{rating.data.title}</a> */}
             {/* live GitHub Pages */}
-            <a href=`/movie-blog/ratings/${rating.id}`>{rating.data.title}</a>
+            <a href=`/ratings/${rating.id}`>{rating.data.title}</a>
             <span class="inlineInfo">
                 (dir. {rating.data.director})
             </span>

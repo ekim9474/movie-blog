@@ -333,7 +333,7 @@ export const fullWatchlist = {
 330: {'movieName': `Samuel`, 'year': '2024', 'watched': false, 'difficulty': 0},
 331: {'movieName': `Love Exposure`, 'year': '2008', 'watched': false, 'difficulty': 0},
 332: {'movieName': `Paper Moon`, 'year': '1973', 'watched': false, 'difficulty': 0},
-333: {'movieName': `La Jetée`, 'year': '1962', 'watched': false, 'difficulty': 0},
+333: {'movieName': `La Jetée`, 'year': '1962', 'watched': true, 'difficulty': 0},
 334: {'movieName': `Kes`, 'year': '1969', 'watched': false, 'difficulty': 0},
 335: {'movieName': `The Lovers on the Bridge`, 'year': '1991', 'watched': false, 'difficulty': 0},
 336: {'movieName': `They Cloned Tyrone`, 'year': '2023', 'watched': false, 'difficulty': 0},
@@ -697,5 +697,7 @@ export const fullWatchlist = {
 694: {'movieName': 'Stranger Than Paradise', 'year': '1984', 'watched': false, 'difficulty': 0},
 695: {'movieName': 'Madness', 'year': '1969', 'watched': false, 'difficulty': 0},
 696: {'movieName': 'BLKNWS: Terms & Conditions', 'year': '2025', 'watched': false, 'difficulty': 0},
-697: {'movieName': 'Moonlit Winter', 'year': '2025', 'watched': false, 'difficulty': 0}
+697: {'movieName': 'Moonlit Winter', 'year': '2025', 'watched': false, 'difficulty': 0},
+698: {'movieName': 'The Hypothesis of the Stolen Painting', 'year': '1978', 'watched': false, 'difficulty': 0},
+699: {'movieName': 'Sambizanga', 'year': '1972', 'watched': false, 'difficulty': 0},
 }
