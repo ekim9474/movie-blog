@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+
+import GenLayout from "../../../layouts/GenLayout.astro";
+import { highArtList } from "../../../data/lists/high-art";
+---
+
+<GenLayout title="The Inaccessible and Provocative: High Art Movies">
+  <div class="genContainer">
+    <div class="section">
+      <h1>The Inaccessible and Provocative: High Art Movies</h1>
+      <p>
+        The cinematic artform can push the boundaries, not just in sight or
+        sound, but in form or content. This list will seek to show the movies
+        that provoke beyond the fundamentals.
+      </p>
+    </div>
+    <div class="listGrid">
+      <!-- <div class="movieCard">
+        <h2>Blue</h2>
+        <h3>Derek Jarman</h3>
+        <p>
+          Blue documents Jarman's journey towards death with AIDS. Through the
+          domination of color and narration, Jarman creates an intensely
+          intimate and personal story.
+        </p>
+      </div>
+      <div class="movieCard">
+        <h2>Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles</h2>
+        <h3>Chantal Akerman</h3>
+        <p>
+          Widely considered to be Akerman's most notable work, Jeanne Dielman is
+          a claustrophobic and unfettered deconstruction of domestic servitude.
+        </p> -->
+      {
+        Object.entries(highArtList)
+          .sort(([, a], [, b]) => a.movieName.localeCompare(b.movieName))
+          .map(([key, value]) => (
+            <div class="movieCard">
+              <h2>{value.movieName}</h2>
+              {value.image == "" ? (
+                <span />
+              ) : (
+                <Image src={value.image} width="184" height="115" alt="" />
+              )}
+              <div>
+                <h3>{value.director}</h3>
+                <p id="movieInfo">
+                  {value.year}, {value.country}, {value.runtime}
+                </p>
+              </div>
+              <p>{value.description}</p>
+            </div>
+          ))
+      }
+    </div>
+  </div>
+</GenLayout>
+
+<style>
+  img {
+    border-radius: 10px;
+  }
+
+  .genContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max(195px, 50%), 2fr));
+    row-gap: 0.5rem;
+    background-color: #F4F5F0;
+    color: black;
+    border-radius: 15px 15px 15px 15px;
+  }
+
+  .movieCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3%;
+    text-align: center;
+  }
+
+  .section {
+    width: 100%;
+  }
+
+  #movieInfo {
+    font-style: italic;
+  }
+</style>
